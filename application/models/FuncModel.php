@@ -54,8 +54,43 @@ class FuncModel extends CI_Model{
     
     public function listing(){
         $this->db->select('*');
+        $this->db->order_by("fun_nome", "asc");
+        return $this->db->get("funcionario", 10, 0)->result();
+    }
+    
+    public function listingreverse(){
+        $this->db->select('*');
         $this->db->order_by("fun_nome", "desc");
-        return $this->db->get("funcionario")->result();
+        return $this->db->get("funcionario", 10, 0)->result();
+    }
+    
+    public function listingOld(){
+        $this->db->select('*');
+        $this->db->order_by("fun_id", "asc");
+        return $this->db->get("funcionario", 10, 0)->result();
+    }
+    
+    public function listingNew(){
+        $this->db->select('*');
+        $this->db->order_by("fun_id", "desc");
+        return $this->db->get("funcionario", 10, 0)->result();
+    }
+
+    public function listpaginado($ordenacao, $pagina){
+        $this->db->select('*');
+        if($ordenacao == 0){
+            $this->db->order_by("fun_nome", "asc");
+        }
+        if($ordenacao == 1){
+            $this->db->order_by("fun_id", "asc");
+        }
+        if($ordenacao == 2){
+            $this->db->order_by("fun_id", "desc");
+        }
+        if($ordenacao == 3){
+            $this->db->order_by("fun_nome", "desc");
+        }
+        return $this->db->get("funcionario", 10, ($pagina*10))->result();
     }
 
     public function search($fun_id) {
