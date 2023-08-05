@@ -1,22 +1,21 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Funcionarios extends CI_Controller {
 	public function index() {
 
 		if ($this->isLogged()){
-            //$this->load->model('XXXXModel');
-		    //$xxxx = new XXXXModel();
+            $this->load->model('FuncModel');
+		    $funcionarios = new FuncModel();
 			
-			//$QQR = $xxxxx->listing();
-			
-			
-			//$content = array(
-			//	"xxxxx" => $QQR);
+			$lista = $funcionarios->listing();
+						
+			$content = array(
+				"funcionarios" => $lista);
 			
 			$this->load->view('template/admin/header');
 			$this->load->view('template/admin/menu');
-			$this->load->view('admin/inicio');
+			$this->load->view('admin/funcionarios', $content);
 			$this->load->view('template/admin/footer');
 			
         }else{
