@@ -31,31 +31,59 @@
         <div class="table-responsive">
             <table class="table table-hover table-sm">
                 <thead>
-                    <tr>
-                        <th scope="col">Data</th>
-                        <th scope="col">Tipo</th>
-                        <th scope="col">Valor</th>
-                        <th scope="col">Observação</th>
-                    </tr>
+                    <?php if($tipo == 2){ ?>
+                        <tr>
+                            <th scope="col">Data</th>
+                            <th scope="col">Tipo</th>
+                            <th scope="col">Valor</th>
+                            <th scope="col">Observação</th>
+                        </tr>
+                    <?php } else { ?>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Tipo</th>
+                            <th scope="col">Valor</th>
+                            <th scope="col">Funcionário</th>
+                            <th scope="col">Observação</th>
+                            <th scope="col">Data</th>
+                        </tr>
+                    <?php } ?>
                 </thead>
                 <tbody>
                     <?php foreach($movimentacoes as $item){ ?>
-                        <tr>
-                            <td><?php echo date('d/m/Y', strtotime($item->mov_data)) ?></td>
-                            <td>
-                                <?php if($item->mov_tipo == 1){ ?>
-                                    Entrada
-                                <?php } else { ?>
-                                    Saída
-                                <?php } ?>
-                            </td>
-                            <td>$ <?php echo number_format($item->mov_valor, 2, ',', '.'); ?></td>
-                            <td><?php echo $item->mov_obs ?></td>
-                        </tr>
+                        <?php if($tipo == 2){ ?>
+                            <tr>
+                                <td><?php echo date('d/m/Y', strtotime($item->mov_data)) ?></td>
+                                <td>
+                                    <?php if($item->mov_tipo == 1){ ?>
+                                        Entrada
+                                    <?php } else { ?>
+                                        Saída
+                                    <?php } ?>
+                                </td>
+                                <td>$ <?php echo number_format($item->mov_valor, 2, ',', '.'); ?></td>
+                                <td><?php echo $item->mov_obs ?></td>
+                            </tr>
+                        <?php } else { ?>
+                            <tr>
+                                <td><?php echo $item->mov_id ?></td>
+                                <td>
+                                    <?php if($item->mov_tipo == 1){ ?>
+                                        Entrada
+                                    <?php } else { ?>
+                                        Saída
+                                    <?php } ?>
+                                </td>
+                                <td>$ <?php echo number_format($item->mov_valor, 2, ',', '.'); ?></td>
+                                <td><?php echo $item->fun_nome ?></td>
+                                <td><?php echo $item->mov_obs ?></td>
+                                <td><?php echo date('d/m/Y', strtotime($item->mov_data)) ?></td>
+                            </tr>
+                        <?php } ?>
                     <?php } ?>
                 </tbody>
             </table>
-            <?php if($tipo == 1){ ?>}
+            <?php if($tipo == 1){ ?>
                 <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center">
                         <?php if($pagina == 0){ ?>
@@ -66,7 +94,7 @@
                             </li>
                         <?php } else{ ?>
                             <li class="page-item">
-                                <a class="page-link" href="<?= base_url('funcionarios/pagina/'.($pagina-1)); ?>" aria-label="Voltar">
+                                <a class="page-link" href="<?= base_url('movimentacoes/pagina/'.($pagina-1)); ?>" aria-label="Voltar">
                                     <span aria-hidden="true">&laquo;</span>
                                 </a>
                             </li>
@@ -74,17 +102,17 @@
                         <?php if($mult == true){ ?>
                             <?php for($i = 0; $i<intdiv($itens, 10); $i++){ ?>
                                 <?php if($i == $pagina){ ?>
-                                    <li class="page-item active"><a class="page-link" href="<?= base_url('funcionarios/pagina/'.$i); ?>"><?php echo $i+1; ?></a></li>
+                                    <li class="page-item active"><a class="page-link" href="<?= base_url('movimentacoes/pagina/'.$i); ?>"><?php echo $i+1; ?></a></li>
                                 <?php } else {?>
-                                    <li class="page-item"><a class="page-link" href="<?= base_url('funcionarios/pagina/'.$i); ?>"><?php echo $i+1; ?></a></li>
+                                    <li class="page-item"><a class="page-link" href="<?= base_url('movimentacoes/pagina/'.$i); ?>"><?php echo $i+1; ?></a></li>
                                 <?php } ?>
                             <?php } ?>
                         <?php } else { ?>
                             <?php for($i = 0; $i<=intdiv($itens, 10); $i++){ ?>
                                 <?php if($i == $pagina){ ?>
-                                    <li class="page-item active"><a class="page-link" href="<?= base_url('funcionarios/pagina/'.$i); ?>"><?php echo $i+1; ?></a></li>
+                                    <li class="page-item active"><a class="page-link" href="<?= base_url('movimentacoes/pagina/'.$i); ?>"><?php echo $i+1; ?></a></li>
                                 <?php } else {?>
-                                    <li class="page-item"><a class="page-link" href="<?= base_url('funcionarios/pagina/'.$i); ?>"><?php echo $i+1; ?></a></li>
+                                    <li class="page-item"><a class="page-link" href="<?= base_url('movimentacoes/pagina/'.$i); ?>"><?php echo $i+1; ?></a></li>
                                 <?php } ?>
                             <?php } ?>
                         <?php } ?>
@@ -96,7 +124,7 @@
                             </li>
                         <?php } else{ ?>
                             <li class="page-item">
-                                <a class="page-link" href="<?= base_url('funcionarios/pagina/'.($pagina+1)); ?>" aria-label="Next">
+                                <a class="page-link" href="<?= base_url('movimentacoes/pagina/'.($pagina+1)); ?>" aria-label="Next">
                                     <span aria-hidden="true">&raquo;</span>
                                 </a>
                             </li>

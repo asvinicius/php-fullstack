@@ -38,6 +38,14 @@ class MovModel extends CI_Model{
         }
     }
     
+    public function listing(){
+        $this->db->select('*');
+        $this->db->join('funcionario', 'fun_id=mov_fun', 'inner');
+        $this->db->join('administrador', 'adm_id=mov_adm', 'inner');
+        $this->db->order_by("mov_id", "desc");
+        return $this->db->get("movimentacao", 10, 0)->result();
+    }
+    
     public function listingfunc($fun_id){
         $this->db->where("mov_fun", $fun_id);
         $this->db->join('funcionario', 'fun_id=mov_fun', 'inner');
