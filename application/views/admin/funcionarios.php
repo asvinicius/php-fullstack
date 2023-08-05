@@ -49,7 +49,7 @@
                                 </a>
                             </td>
                             <td>
-                                <a class="nav-link" href="<?= base_url('editafunc/signout'); ?>" title="Editar" style="color: blue;">
+                                <a class="nav-link" href="<?= base_url('editafunc/id/'.$item->fun_id); ?>" title="Editar" style="color: blue;">
                                     <span data-feather="edit-2" class="align-text-bottom"></span>
                                 </a>
                             </td>
