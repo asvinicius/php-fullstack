@@ -1,7 +1,7 @@
 <?php
-    defined('BASEPATH') OR exit('No direct script access allowed');
-    error_reporting(0);
-    ini_set(“display_errors”, 0 );
+defined('BASEPATH') OR exit('No direct script access allowed');
+error_reporting(0);
+ini_set("display_errors", 0 );
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -11,7 +11,7 @@
         <meta name="description" content="">
         <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
         <meta name="generator" content="Hugo 0.101.0">
-        <title>A B D A</title>
+        <title>PHP - FullStack</title>
 
         <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
         <link href="<?=  base_url('assets/dist/css/bootstrap.min.css'); ?>" rel="stylesheet">
@@ -73,7 +73,7 @@
     <body>
 
         <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="<?=  base_url(); ?>">A B D A</a>
+            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="<?=  base_url(); ?>">P H P F S</a>
             <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

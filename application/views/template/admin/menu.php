@@ -8,49 +8,24 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('tecnicos'); ?>">
+                <a class="nav-link" href="<?= base_url('funcionarios'); ?>">
                     <span data-feather="users" class="align-text-bottom"></span>
-                    Tecnicos
+                    Funcionários
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('ligas'); ?>">
-                    <span data-feather="file" class="align-text-bottom"></span>
-                    Ligas
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('times'); ?>">
+                <a class="nav-link" href="<?= base_url('movimentacoes'); ?>">
                     <span data-feather="file-text" class="align-text-bottom"></span>
-                    Times
+                    Movimentações
                 </a>
             </li>
-            <!--
+            <hr class="my-3">
             <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="file" class="align-text-bottom"></span>
-                    Orders
+                <a class="nav-link" href="<?= base_url('login/signout'); ?>">
+                    <span data-feather="log-out" class="align-text-bottom"></span>
+                    Sair
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="shopping-cart" class="align-text-bottom"></span>
-                    Products
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-                    Reports
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="layers" class="align-text-bottom"></span>
-                    Integrations
-                </a>
-            </li>
-            -->
         </ul>
 
         <!--
