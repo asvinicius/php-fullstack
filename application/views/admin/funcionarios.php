@@ -8,6 +8,11 @@
             </a>
         </div>
     </div>
+    <?php if ($alert != null) { ?>
+        <div class="alert alert-<?php echo $alert["class"]; ?>" role="alert"> 
+            <?php echo $alert["message"]; ?> 
+        </div>
+    <?php } ?>
     
     <?php if($funcionarios){ ?>
         <div class="table-responsive">

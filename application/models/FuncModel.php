@@ -62,6 +62,11 @@ class FuncModel extends CI_Model{
         $this->db->where("fun_id", $fun_id);
         return $this->db->get("funcionario")->row_array();
     }
+
+    public function searchlogin($fun_login) {
+        $this->db->where("fun_login", $fun_login);
+        return $this->db->get("funcionario")->row_array();
+    }
     
     public function searchlabel($searchlabel){
         $this->db->like("fun_nome", $searchlabel);
