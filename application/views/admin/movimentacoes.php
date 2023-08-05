@@ -17,11 +17,7 @@
     <?php if($movimentacoes){ ?>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <?php if($tipo == 2){ ?>}
-                    <li class="breadcrumb-item"><a href="<?= base_url('movimentacoes/funcionario/'); ?>">Mais novos</a></li>
-                    <li class="breadcrumb-item"><a href="<?= base_url('movimentacoes/ordenacaofun/1'); ?>">Mais antigos</a></li>
-                    <li class="breadcrumb-item"><a href="<?= base_url('movimentacoes/ordenacaofun/2'); ?>">Ordenação por tipo</a></li>
-                <?php } else { ?>
+                <?php if($tipo == 1){ ?>
                     <li class="breadcrumb-item"><a href="<?= base_url('movimentacoes'); ?>">Mais novos</a></li>
                     <li class="breadcrumb-item"><a href="<?= base_url('movimentacoes/ordenacao/1'); ?>">Mais antigos</a></li>
                     <li class="breadcrumb-item"><a href="<?= base_url('movimentacoes/ordenacao/2'); ?>">Ordenação por tipo</a></li>

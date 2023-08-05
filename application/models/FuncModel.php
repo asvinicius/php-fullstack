@@ -52,6 +52,11 @@ class FuncModel extends CI_Model{
         }
     }
     
+    public function getcount(){
+        $this->db->select('*');
+        return $this->db->get("funcionario")->result();
+    }
+    
     public function listing(){
         $this->db->select('*');
         $this->db->order_by("fun_nome", "asc");
@@ -76,20 +81,9 @@ class FuncModel extends CI_Model{
         return $this->db->get("funcionario", 10, 0)->result();
     }
 
-    public function listpaginado($ordenacao, $pagina){
+    public function listpaginado($pagina){
         $this->db->select('*');
-        if($ordenacao == 0){
-            $this->db->order_by("fun_nome", "asc");
-        }
-        if($ordenacao == 1){
-            $this->db->order_by("fun_id", "asc");
-        }
-        if($ordenacao == 2){
-            $this->db->order_by("fun_id", "desc");
-        }
-        if($ordenacao == 3){
-            $this->db->order_by("fun_nome", "desc");
-        }
+        $this->db->order_by("fun_nome", "asc");
         return $this->db->get("funcionario", 10, ($pagina*10))->result();
     }
 

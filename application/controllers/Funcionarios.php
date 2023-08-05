@@ -8,7 +8,39 @@ class Funcionarios extends CI_Controller {
 		    $funcionarios = new FuncModel();
 			
 			$lista = $funcionarios->listing();
-            $itens = count($lista);
+			$lconta = $funcionarios->getcount();
+            $itens = count($lconta);
+
+            if(($itens % 10) == 0) {
+    			$mult = true;
+    		} else {
+    			$mult = false;
+    		}
+						
+			$content = array(
+				"funcionarios" => $lista,
+                "pagina" => 0, 
+    			"itens" => $itens, 
+    			"mult" => $mult);
+			
+			$this->load->view('template/admin/header');
+			$this->load->view('template/admin/menu');
+			$this->load->view('admin/funcionarios', $content);
+			$this->load->view('template/admin/footer');
+			
+        }else{
+            redirect(base_url('login'));
+        }
+	}
+
+	public function pagina($pagina) {
+		if ($this->isLogged()){
+            $this->load->model('FuncModel');
+		    $funcionarios = new FuncModel();
+			
+			$lista = $funcionarios->listpaginado($pagina);
+			$lconta = $funcionarios->getcount();
+            $itens = count($lconta);
 
             if(($itens % 10) == 0) {
     			$mult = true;
@@ -48,10 +80,21 @@ class Funcionarios extends CI_Controller {
                     $lista = $funcionarios->listingreverse();
                     break;
             }
-			
+
+			$lconta = $funcionarios->getcount();
+            $itens = count($lconta);
+
+            if(($itens % 10) == 0) {
+    			$mult = true;
+    		} else {
+    			$mult = false;
+    		}
 						
 			$content = array(
-				"funcionarios" => $lista);
+				"funcionarios" => $lista,
+                "pagina" => 0, 
+    			"itens" => $itens, 
+    			"mult" => $mult);
 			
 			$this->load->view('template/admin/header');
 			$this->load->view('template/admin/menu');
@@ -70,6 +113,14 @@ class Funcionarios extends CI_Controller {
 		    $funcionarios = new FuncModel();
 			
 			$lista = $funcionarios->listing();
+			$lconta = $funcionarios->getcount();
+            $itens = count($lconta);
+
+            if(($itens % 10) == 0) {
+    			$mult = true;
+    		} else {
+    			$mult = false;
+    		}
 						
             $alert = array(
                 "class" => "success",
@@ -77,8 +128,11 @@ class Funcionarios extends CI_Controller {
 
 			$content = array(
 				"funcionarios" => $lista,
+                "pagina" => 0, 
+    			"itens" => $itens, 
+    			"mult" => $mult,
                 "alert" => $alert);
-			
+									
 			$this->load->view('template/admin/header');
 			$this->load->view('template/admin/menu');
 			$this->load->view('admin/funcionarios', $content);
@@ -97,6 +151,14 @@ class Funcionarios extends CI_Controller {
 		    $funcionarios = new FuncModel();
 			
 			$lista = $funcionarios->listing();
+			$lconta = $funcionarios->getcount();
+            $itens = count($lconta);
+
+            if(($itens % 10) == 0) {
+    			$mult = true;
+    		} else {
+    			$mult = false;
+    		}
 						
             $alert = array(
                 "class" => "success",
@@ -104,7 +166,10 @@ class Funcionarios extends CI_Controller {
 
 			$content = array(
 				"funcionarios" => $lista,
-                "alert" => $alert);
+				"pagina" => 0, 
+				"itens" => $itens, 
+				"mult" => $mult,
+				"alert" => $alert);
 			
 			$this->load->view('template/admin/header');
 			$this->load->view('template/admin/menu');
@@ -124,6 +189,14 @@ class Funcionarios extends CI_Controller {
 		    $funcionarios = new FuncModel();
 			
 			$lista = $funcionarios->listing();
+			$lconta = $funcionarios->getcount();
+            $itens = count($lconta);
+
+            if(($itens % 10) == 0) {
+    			$mult = true;
+    		} else {
+    			$mult = false;
+    		}
 						
             $alert = array(
                 "class" => "warning",
@@ -131,7 +204,10 @@ class Funcionarios extends CI_Controller {
 
 			$content = array(
 				"funcionarios" => $lista,
-                "alert" => $alert);
+				"pagina" => 0, 
+				"itens" => $itens, 
+				"mult" => $mult,
+				"alert" => $alert);
 			
 			$this->load->view('template/admin/header');
 			$this->load->view('template/admin/menu');

@@ -8,7 +8,40 @@ class Movimentacoes extends CI_Controller {
 		    $movimentacoes = new MovModel();
 			
 			$lista = $movimentacoes->listing();
-			$itens = count($lista);
+			$lconta = $movimentacoes->getcount();
+            $itens = count($lconta);
+
+            if(($itens % 10) == 0) {
+    			$mult = true;
+    		} else {
+    			$mult = false;
+    		}
+						
+			$content = array(
+				"tipo" => 1, // Tipo 1: Movimentações gerais | Tipo 2: Movimentações por funcionário
+				"movimentacoes" => $lista,
+                "pagina" => 0, 
+    			"itens" => $itens, 
+    			"mult" => $mult);
+			
+			$this->load->view('template/admin/header');
+			$this->load->view('template/admin/menu');
+			$this->load->view('admin/movimentacoes', $content);
+			$this->load->view('template/admin/footer');
+			
+        }else{
+            redirect(base_url('login'));
+        }
+	}	
+
+	public function pagina($pagina) {
+		if ($this->isLogged()){
+            $this->load->model('MovModel');
+		    $movimentacoes = new MovModel();
+			
+			$lista = $movimentacoes->listpaginado($pagina);
+			$lconta = $movimentacoes->getcount();
+            $itens = count($lconta);
 
             if(($itens % 10) == 0) {
     			$mult = true;
@@ -32,6 +65,47 @@ class Movimentacoes extends CI_Controller {
             redirect(base_url('login'));
         }
 	}
+	
+	public function ordenacao($formato) {
+		if ($this->isLogged()){
+            $this->load->model('MovModel');
+		    $movimentacoes = new MovModel();
+						
+			switch ($formato) {
+                case 1:
+                    $lista = $movimentacoes->listingold();
+                    break;
+                case 2:
+                    $lista = $movimentacoes->listingtipo();
+                    break;
+            }
+
+			$lconta = $movimentacoes->getcount();
+            $itens = count($lconta);
+
+            if(($itens % 10) == 0) {
+    			$mult = true;
+    		} else {
+    			$mult = false;
+    		}
+						
+			$content = array(
+				"tipo" => 1, // Tipo 1: Movimentações gerais | Tipo 2: Movimentações por funcionário
+				"movimentacoes" => $lista,
+                "pagina" => 0, 
+    			"itens" => $itens, 
+    			"mult" => $mult);
+			
+			$this->load->view('template/admin/header');
+			$this->load->view('template/admin/menu');
+			$this->load->view('admin/movimentacoes', $content);
+			$this->load->view('template/admin/footer');
+
+			
+        }else{
+            redirect(base_url('login'));
+        }
+	}
 
 	public function sucesso() {
 		if ($this->isLogged()){
@@ -39,7 +113,8 @@ class Movimentacoes extends CI_Controller {
 		    $movimentacoes = new MovModel();
 			
 			$lista = $movimentacoes->listing();
-			$itens = count($lista);
+			$lconta = $movimentacoes->getcount();
+            $itens = count($lconta);
 
             if(($itens % 10) == 0) {
     			$mult = true;

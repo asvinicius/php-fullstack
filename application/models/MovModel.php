@@ -37,6 +37,11 @@ class MovModel extends CI_Model{
 			return $this->db->get("movimentacao")->row_array();
         }
     }
+
+    public function getcount(){
+        $this->db->select('*');
+        return $this->db->get("movimentacao")->result();
+    }
     
     public function listing(){
         $this->db->select('*');
@@ -46,12 +51,36 @@ class MovModel extends CI_Model{
         return $this->db->get("movimentacao", 10, 0)->result();
     }
     
+    public function listingold(){
+        $this->db->select('*');
+        $this->db->join('funcionario', 'fun_id=mov_fun', 'inner');
+        $this->db->join('administrador', 'adm_id=mov_adm', 'inner');
+        $this->db->order_by("mov_id", "asc");
+        return $this->db->get("movimentacao", 10, 0)->result();
+    }
+    
+    public function listingtipo(){
+        $this->db->select('*');
+        $this->db->join('funcionario', 'fun_id=mov_fun', 'inner');
+        $this->db->join('administrador', 'adm_id=mov_adm', 'inner');
+        $this->db->order_by("mov_tipo", "asc");
+        return $this->db->get("movimentacao", 10, 0)->result();
+    }
+    
     public function listingfunc($fun_id){
         $this->db->where("mov_fun", $fun_id);
         $this->db->join('funcionario', 'fun_id=mov_fun', 'inner');
         $this->db->join('administrador', 'adm_id=mov_adm', 'inner');
         $this->db->order_by("mov_id", "desc");
         return $this->db->get("movimentacao", 10, 0)->result();
+    }
+
+    public function listpaginado($pagina){
+        $this->db->select('*');
+        $this->db->join('funcionario', 'fun_id=mov_fun', 'inner');
+        $this->db->join('administrador', 'adm_id=mov_adm', 'inner');
+        $this->db->order_by("mov_id", "desc");
+        return $this->db->get("movimentacao", 10, ($pagina*10))->result();
     }
     
     function getMov_id() {
