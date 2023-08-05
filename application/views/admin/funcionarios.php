@@ -54,7 +54,7 @@
                                 </a>
                             </td>
                             <td>
-                                <a class="nav-link" href="<?= base_url('funcionarios/remove'); ?>" title="Remover" style="color: red;">
+                                <a class="nav-link" href="<?= base_url('funcionarios/remover/'.$item->fun_id); ?>" title="Remover" style="color: red;" onclick="return confirm('Tem certeza que deseja remover?');">
                                     <span data-feather="trash" class="align-text-bottom"></span>
                                 </a>
                             </td>

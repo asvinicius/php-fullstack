@@ -116,4 +116,46 @@ class Funcionarios extends CI_Controller {
         }
 		
 	}
+
+	public function removido() {
+
+		if ($this->isLogged()){
+            $this->load->model('FuncModel');
+		    $funcionarios = new FuncModel();
+			
+			$lista = $funcionarios->listing();
+						
+            $alert = array(
+                "class" => "warning",
+                "message" => "Funcionário removido com sucesso");
+
+			$content = array(
+				"funcionarios" => $lista,
+                "alert" => $alert);
+			
+			$this->load->view('template/admin/header');
+			$this->load->view('template/admin/menu');
+			$this->load->view('admin/funcionarios', $content);
+			$this->load->view('template/admin/footer');
+			
+        }else{
+            redirect(base_url('login'));
+        }
+		
+	}
+
+	public function remover($fun_id = null) {
+        if ($this->isLogged()){
+            $this->load->model('FuncModel');
+		    $funcionarios = new FuncModel();
+			
+			$fundata = $funcionarios->search($fun_id);
+            
+            if($funcionarios->delete($fundata['fun_id'])){
+                redirect(base_url('funcionarios/removido'));
+            }
+        }else{
+            redirect(base_url('login'));
+        }
+    }
 }
