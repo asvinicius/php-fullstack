@@ -15,7 +15,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('movimentacoes'); ?>">
-                    <span data-feather="file-text" class="align-text-bottom"></span>
+                    <span data-feather="repeat" class="align-text-bottom"></span>
                     Movimentações
                 </a>
             </li>

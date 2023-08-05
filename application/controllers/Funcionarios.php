@@ -31,6 +31,7 @@ class Funcionarios extends CI_Controller {
             redirect(base_url('login'));
         }
 	}
+	
 	public function ordenacao($formato) {
 		if ($this->isLogged()){
             $this->load->model('FuncModel');

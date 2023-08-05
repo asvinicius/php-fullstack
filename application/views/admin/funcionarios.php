@@ -2,7 +2,7 @@
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Funcionarios</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
-        </nav>
+        
             <a type="button" class="btn btn-sm btn-outline-secondary" href="<?= base_url('addfunc'); ?>">
                 <span data-feather="plus" class="align-text-bottom"></span>
                 Adicionar
@@ -31,7 +31,9 @@
                         <th scope="col">Nome</th>
                         <th scope="col">Saldo</th>
                         <th scope="col">Criação</th>
-                        <th scope="col">Ações</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,7 +43,21 @@
                             <td><?php echo $item->fun_nome ?></td>
                             <td>$ <?php echo number_format($item->fun_saldo, 2, ',', '.'); ?></td>
                             <td><?php echo date('d/m/Y', strtotime($item->fun_criacao)) ?></td>
-                            <td>Ações</td>
+                            <td>
+                                <a class="nav-link" href="<?= base_url('movimentacoes/funcionario/'.$item->fun_id); ?>" title="Extrato do funcionário">
+                                    <span data-feather="file-text" class="align-text-bottom"></span>
+                                </a>
+                            </td>
+                            <td>
+                                <a class="nav-link" href="<?= base_url('editafunc/signout'); ?>" title="Editar" style="color: blue;">
+                                    <span data-feather="edit-2" class="align-text-bottom"></span>
+                                </a>
+                            </td>
+                            <td>
+                                <a class="nav-link" href="<?= base_url('funcionarios/remove'); ?>" title="Remover" style="color: red;">
+                                    <span data-feather="trash" class="align-text-bottom"></span>
+                                </a>
+                            </td>
                         </tr>
                     <?php } ?>
                 </tbody>
